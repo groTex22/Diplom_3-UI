@@ -1,2 +1,4 @@
-package pageObject;public class ForgotPasswordPage {
+package pageObject;
+
+public class ForgotPasswordPage {
 }

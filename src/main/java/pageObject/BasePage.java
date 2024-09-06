@@ -1,2 +1,4 @@
-package pageObject;public class BasePage {
+package pageObject;
+
+public class BasePage {
 }
