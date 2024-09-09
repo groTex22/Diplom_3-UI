@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static pageObject.LoginPage.LOGIN_URL;
-
 public class RegisterPage {
     WebDriver driver;
     WebDriverWait wait;
@@ -23,6 +21,8 @@ public class RegisterPage {
     private final By emailUserInput = By.xpath(".//div[label[text()='Email']]/input[@name='name']");
     private final By passwordUserInput = By.xpath(".//div[label[text()='Пароль']]/input[@name='Пароль']");
     private final By regButton = By.xpath(".//button[text()='Зарегистрироваться']");
+    //Кнопка "войти" внизу страницы
+    private final By loginButton = By.xpath(".//a[text()='Войти']");
 
 
     @Step("Регистрация.Заполнение имени")
@@ -43,13 +43,6 @@ public class RegisterPage {
         return this;
     }
 
-  /*  @Step("Регистрация.Нажатие кнопки регистрации")
-    public Boolean clickRegButton(String url) {
-        driver.findElement(regButton).click();
-       // return ;
-        return wait.until(ExpectedConditions.urlToBe(url));
-    }*/
-
     @Step("Регистрация.Нажатие кнопки регистрации")
     public void clickRegButton() {
         driver.findElement(regButton).click();
@@ -58,6 +51,11 @@ public class RegisterPage {
     @Step("Регистрация.Ожидание перехода на другую страницу")
     public Boolean waitURL(String url) {
         return  wait.until(ExpectedConditions.urlToBe(url));
+    }
+
+    @Step("Регистрация.Клик на кнопку 'Войти' внизу страницы")
+    public void clickLoginButton() {
+        driver.findElement(loginButton).click();
     }
 
 
