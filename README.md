@@ -25,7 +25,7 @@
 
 
 ### Отчет покрытия тестов PNG
-![Отчет](src\test\resources\Screenshot_11.png)
+![Отчет](https://github.com/groTex22/Diplom_3-UI/blob/develop/src/test/resources/Screenshot_11.png)
 
 
 ## Запуск тестов
