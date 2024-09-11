@@ -1,9 +1,11 @@
-package API.clients;
+package api.clients;
 
 import io.qameta.allure.Step;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import json.User;
+import json.UserEmailPassword;
 
 import static io.restassured.RestAssured.given;
 
@@ -22,7 +24,7 @@ public class ClientUser {
     }
 
     @Step("loginUserReturnToken")
-    public String loginUserReturnToken(String loginUser) {
+    public String loginUserReturnToken(UserEmailPassword loginUser) {
         return given()
                 .spec(getSpec())
                 .body(loginUser) //передаем инфу по курьеру
@@ -42,7 +44,7 @@ public class ClientUser {
     }
 
     @Step("RegistrationUserReturnToken")
-    public String createUser(String user) {
+    public String createUser(User user) {
             return given()
                     .spec(getSpec())
                     .body(user) //передаем инфу по курьеру

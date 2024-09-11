@@ -1,4 +1,4 @@
-package pageObject;
+package page_object;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -8,7 +8,7 @@ public class LoginPage {
     WebDriver driver;
 
 
-    public static String LOGIN_URL = "https://stellarburgers.nomoreparties.site/login";
+    public final static String LOGIN_URL = "https://stellarburgers.nomoreparties.site/login";
 
     private final By emailUserInput = By.xpath(".//input[@name='name']");
     private final By passwordUserInput = By.xpath(".//input[@name='Пароль']");

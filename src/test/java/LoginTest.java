@@ -1,4 +1,5 @@
-import API.clients.ClientUser;
+import api.clients.ClientUser;
+import json.User;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,15 +7,15 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObject.BasePage;
-import pageObject.ForgotPasswordPage;
-import pageObject.LoginPage;
-import pageObject.RegisterPage;
+import page_object.BasePage;
+import page_object.ForgotPasswordPage;
+import page_object.LoginPage;
+import page_object.RegisterPage;
 
-import static pageObject.BasePage.BASE_PAGE_URL;
-import static pageObject.ForgotPasswordPage.FORGOT_PASS_URL;
-import static pageObject.LoginPage.LOGIN_URL;
-import static pageObject.RegisterPage.REG_URL;
+import static page_object.BasePage.BASE_PAGE_URL;
+import static page_object.ForgotPasswordPage.FORGOT_PASS_URL;
+import static page_object.LoginPage.LOGIN_URL;
+import static page_object.RegisterPage.REG_URL;
 
 /*Класс тестирует авторизацию, а именно
 * 1. Переходы к странице авторизации из разных мест веб интерфейса
@@ -31,7 +32,7 @@ public class LoginTest extends AbstractUiTest {
     //В before запускается браузер и открывается страница регистрации
     @Before
     public void beforeTest() {
-        driver = getDriver("chrome");
+        driver = getDriver();
 
         wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(5));
         //Создаем экземпляры объектов
@@ -96,10 +97,10 @@ public class LoginTest extends AbstractUiTest {
     @Test
     public void loginTest() {
         //Для этого теста нужен пользователь, создадим его
-        //Сделаем JSON
-        String json = "{\"name\": \"" + name + "\", \"email\": \"" + email + "\",  \"password\": \"" + password + "\" }\r\n";
+        //Создаем JSON из объекта
+        User user = new User(name, email, password);
         //Создадим юзера
-        String tokken = clientUser.createUser(json);
+        String tokken = clientUser.createUser(user);
         Assert.assertNotNull(tokken);
         //Открываем страницу авторизации
         driver.get(LOGIN_URL);

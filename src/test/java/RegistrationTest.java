@@ -1,4 +1,5 @@
-import API.clients.ClientUser;
+import api.clients.ClientUser;
+import json.UserEmailPassword;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,9 +7,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import pageObject.RegisterPage;
+import page_object.RegisterPage;
 
-import static pageObject.LoginPage.LOGIN_URL;
+import static page_object.LoginPage.LOGIN_URL;
 
 public class RegistrationTest extends AbstractUiTest {
 
@@ -18,7 +19,7 @@ public class RegistrationTest extends AbstractUiTest {
     //В before запускается браузер и открывается страница регистрации
     @Before
     public void beforeTest() {
-        driver = getDriver("chrome");
+        driver = getDriver();
 
         registerPage = new RegisterPage(driver);
         // Переход на тестируемую страничку
@@ -33,7 +34,7 @@ public class RegistrationTest extends AbstractUiTest {
 
     //Положительный сценарий регистрации
     @Test
-    public void RegistrationUserSuccessTest() {
+    public void registrationUserSuccessTest() {
         registerPage
                 .inputNameRegistration(name) //заполняем имя
                 .inputEmailRegistration(email) //заполняем емаил
@@ -47,13 +48,14 @@ public class RegistrationTest extends AbstractUiTest {
         //нужно авторизоваться, получить токен и удалиться
         //Это будет быстрее через API, выносить в after лень, так как пока нужно всего в одном тесте
         ClientUser clientUser = new ClientUser();
-        String json = "{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}";
-        clientUser.deleteUser(clientUser.loginUserReturnToken(json));
+        UserEmailPassword user = new UserEmailPassword(email, password);
+      //  String json = "{\"email\": \"" + email + "\", \"password\": \"" + password + "\"}";
+        clientUser.deleteUser(clientUser.loginUserReturnToken(user));
     }
 
     //Неудачная попытка регистрации (Пароль не удовлетворяет требованиям)
     @Test
-    public void RegistrationUserIncorrectPasswordTest() {
+    public void registrationUserIncorrectPasswordTest() {
         registerPage
                 .inputNameRegistration(name)
                 .inputEmailRegistration(email)

@@ -1,4 +1,4 @@
-package pageObject;
+package page_object;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -14,7 +14,7 @@ public class ForgotPasswordPage {
         this.wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(3));
     }
 
-    public static String FORGOT_PASS_URL = "https://stellarburgers.nomoreparties.site/forgot-password";
+    public final static String FORGOT_PASS_URL = "https://stellarburgers.nomoreparties.site/forgot-password";
 
     //Кнопка "войти" внизу страницы
     private final By loginButton = By.xpath(".//a[text()='Войти']");

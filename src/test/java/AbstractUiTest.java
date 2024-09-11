@@ -1,23 +1,37 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.FileInputStream;
+import java.io.*;
+import java.util.*;
 
 /**
  * Базовый клас для ui-тестов
  * Здесь прописаны процедуры, используемые для создания драйверов
  */
+
 public abstract class AbstractUiTest {
     //некоторые переменные засунем в одно место, удобнее будет поддерживать
     protected String name = "name11";
     protected String email = "ryzkov12312@diplom.ru";
     protected String password = "123213123!";
 
-    //Запуск указанного браузера
-    protected static WebDriver getDriver (String driverType){
+    //Запуск браузера данные о браузере берем из My.properties
+    protected static WebDriver getDriver (){
+
+        Properties prop = new Properties();
+        try (InputStream input = new FileInputStream("My.properties")) {
+            prop.load(input);  // Загружаем свойства из файла
+        } catch (IOException e) {
+            System.out.println("Ругаемся при загрузке проперти");  // Обрабатываем исключение в случае ошибки
+            e.printStackTrace();
+        }
+
+        String driverType = prop.getProperty("browser");
+
         switch (driverType) {
             case "chrome" :
                 ChromeOptions options = new ChromeOptions();

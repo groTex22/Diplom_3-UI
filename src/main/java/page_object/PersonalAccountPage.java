@@ -1,4 +1,4 @@
-package pageObject;
+package page_object;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -10,7 +10,7 @@ public class PersonalAccountPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    public static String PERS_ACC_URL = "https://stellarburgers.nomoreparties.site/account/profile";
+    public final static String PERS_ACC_URL = "https://stellarburgers.nomoreparties.site/account/profile";
 
     private final By exitButton = By.xpath(".//button[text()='Выход']");
     private final By constructButton =By.xpath(".//p[text()='Конструктор']");

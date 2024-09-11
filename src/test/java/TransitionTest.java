@@ -1,18 +1,19 @@
-import API.clients.ClientUser;
+import api.clients.ClientUser;
+import json.User;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pageObject.BasePage;
-import pageObject.LoginPage;
-import pageObject.PersonalAccountPage;
+import page_object.BasePage;
+import page_object.LoginPage;
+import page_object.PersonalAccountPage;
 
 
 import java.util.concurrent.TimeUnit;
 
-import static pageObject.BasePage.BASE_PAGE_URL;
-import static pageObject.LoginPage.LOGIN_URL;
-import static pageObject.PersonalAccountPage.PERS_ACC_URL;
+import static page_object.BasePage.BASE_PAGE_URL;
+import static page_object.LoginPage.LOGIN_URL;
+import static page_object.PersonalAccountPage.PERS_ACC_URL;
 
 /*В этом классе проверяются переходы
  * 1. Переход авторизованного пользвоателя в личный кабинет
@@ -34,18 +35,16 @@ public class TransitionTest extends AbstractUiTest {
     @Before
     public void beforeTest() {
         //Запускаем браузер
-        driver = getDriver("chrome");
+        driver = getDriver();
         wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(5));
 
         //Создадим необходимые объекты
         basePage = new BasePage(driver);
         loginPage = new LoginPage(driver);
         personalAccountPage = new PersonalAccountPage(driver);
-        //to_do: наверное формирование JSON удобнее будет вынести в отдельный класс,
-        //чтобы потом просто дергать нужные методы с переменными
-        String createJson
-                = "{\"name\": \"" + name + "\", \"email\": \"" + email + "\",  \"password\": \"" + password + "\" }\r\n";
-        tokken = clientUser.createUser(createJson);
+        //Создаем JSON из объекта
+        User user = new User(name, email, password);
+        tokken = clientUser.createUser(user);
 
     }
 

@@ -1,4 +1,4 @@
-package pageObject;
+package page_object;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ public class RegisterPage {
         this.wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(3));
     }
 
-    public static String REG_URL = "https://stellarburgers.nomoreparties.site/register";
+    public final static String REG_URL = "https://stellarburgers.nomoreparties.site/register";
 
     private final By nameUserInput = By.xpath(".//div[label[text()='Имя']]/input[@name='name']");
     private final By emailUserInput = By.xpath(".//div[label[text()='Email']]/input[@name='name']");

@@ -1,8 +1,8 @@
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
-import pageObject.BasePage;
+import page_object.BasePage;
 
-import static pageObject.BasePage.BASE_PAGE_URL;
+import static page_object.BasePage.BASE_PAGE_URL;
 
 public class ConstructorSectionTest extends AbstractUiTest {
     private static WebDriver driver;
@@ -11,7 +11,7 @@ public class ConstructorSectionTest extends AbstractUiTest {
     /*Так как будет просто переключаться по вкладкам, то не надо перед каждый тестом запускать браузер*/
     @BeforeClass
     public static void beforeTest() {
-        driver = getDriver("chrome");
+        driver = getDriver();
 
         basePage = new BasePage(driver);
         driver.get(BASE_PAGE_URL);

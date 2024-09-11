@@ -1,4 +1,4 @@
-package pageObject;
+package page_object;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ public class BasePage {
         this.wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(3));
     }
 
-    public static String BASE_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
+    public final static String BASE_PAGE_URL = "https://stellarburgers.nomoreparties.site/";
 
 
     private final By buttonLoginInBasePage = By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg']");
@@ -23,11 +23,17 @@ public class BasePage {
     private final By buttonCreateOrder= By.xpath(".//button[text()='Оформить заказ']");
 
     private final By buttonBuns= By.xpath(".//span[text()='Булки']");
-    private final By buns = By.xpath(".//h2[text()='Булки']");
     private final By buttonSauce= By.xpath(".//span[text()='Соусы']");
-    private final By sauce = By.xpath(".//h2[text()='Соусы']");
     private final By buttonFilling= By.xpath(".//span[text()='Начинки']");
-    private final By filling = By.xpath(".//h2[text()='Начинки']");
+    //При выделении разделам он становится подчеркнутым
+    // и к имени класса добавляется стиль tab_tab_type_current__2BEPc
+    //Для поиска проще обратится к родителю от имени раздела
+    private final By bunsInUnderlined
+            = By.xpath(".//span[text()='Булки']/parent::div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
+    private final By sauceInUnderlined
+            = By.xpath(".//span[text()='Соусы']/parent::div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
+    private final By fillingInUnderlined
+            = By.xpath(".//span[text()='Начинки']/parent::div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']");
 
 
     @Step("Главная страница.Нажатие кнопки 'Войти в аккаунт'")
@@ -50,9 +56,9 @@ public class BasePage {
         driver.findElement(buttonBuns).click();
     }
 
-    @Step("На экране появились 'Булки'")
+    @Step("На экране раздел 'Булки' стал подчеркнутым")
     public boolean visibilityBuns() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(buns)).isDisplayed();
+        return driver.findElement(bunsInUnderlined).isDisplayed();
     }
 
     @Step("Клик по кнопке 'Соусы'")
@@ -60,9 +66,9 @@ public class BasePage {
         driver.findElement(buttonSauce).click();
     }
 
-    @Step("На экране появились 'Булки'")
+    @Step("На экране раздел 'Соусы' стал подчеркнутым")
     public boolean visibilitySauce() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(sauce)).isDisplayed();
+        return driver.findElement(sauceInUnderlined).isDisplayed();
     }
 
     @Step("Клик по кнопке 'Начинки'")
@@ -70,8 +76,8 @@ public class BasePage {
         driver.findElement(buttonFilling).click();
     }
 
-    @Step("На экране появились 'Булки'")
+    @Step("На экране раздел 'Начинки' стал подчеркнутым")
     public boolean visibilityFilling() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(filling)).isDisplayed();
+        return driver.findElement(fillingInUnderlined).isDisplayed();
     }
 }
