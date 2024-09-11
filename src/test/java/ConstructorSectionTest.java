@@ -26,6 +26,9 @@ public class ConstructorSectionTest extends AbstractUiTest {
     //Проверим переход к секции булки
     @Test
     public void crossSectionBunsTest() {
+        //Так как по-умолчанию уже стоим на этом разделе, то чтобы не упасть в невозможность кликнуть
+        //Перейдем в другой раздел
+        basePage.clickButtonSauce();
         basePage.clickButtonBuns();
         //Проверяем, что появилась область с булками
         Assert.assertTrue(basePage.visibilityBuns());

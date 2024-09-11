@@ -30,8 +30,8 @@ public abstract class AbstractUiTest {
             e.printStackTrace();
         }
 
+        //Получим браузер из файла конфигурации
         String driverType = prop.getProperty("browser");
-
         switch (driverType) {
             case "chrome" :
                 ChromeOptions options = new ChromeOptions();

@@ -1,5 +1,4 @@
 package json;
-package json;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
