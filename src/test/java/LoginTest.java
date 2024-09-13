@@ -1,4 +1,5 @@
 import api.clients.ClientUser;
+import io.qameta.allure.junit4.DisplayName;
 import json.User;
 import org.junit.After;
 import org.junit.Assert;
@@ -7,15 +8,15 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page_object.BasePage;
-import page_object.ForgotPasswordPage;
-import page_object.LoginPage;
-import page_object.RegisterPage;
+import pageobject.BasePage;
+import pageobject.ForgotPasswordPage;
+import pageobject.LoginPage;
+import pageobject.RegisterPage;
 
-import static page_object.BasePage.BASE_PAGE_URL;
-import static page_object.ForgotPasswordPage.FORGOT_PASS_URL;
-import static page_object.LoginPage.LOGIN_URL;
-import static page_object.RegisterPage.REG_URL;
+import static pageobject.BasePage.BASE_PAGE_URL;
+import static pageobject.ForgotPasswordPage.FORGOT_PASS_URL;
+import static pageobject.LoginPage.LOGIN_URL;
+import static pageobject.RegisterPage.REG_URL;
 
 /*Класс тестирует авторизацию, а именно
 * 1. Переходы к странице авторизации из разных мест веб интерфейса
@@ -50,6 +51,7 @@ public class LoginTest extends AbstractUiTest {
 
     //Проверяем, что при клике на кнопку 'Войти в аккаунт'
     //Осуществляется переход на страницу авторизации
+    @DisplayName("Клик на кнопку 'Войти в аккаунт'")
     @Test
     public void goToLoginPageClickLoginTest() {
         // Переход на стартовую страницу
@@ -61,6 +63,7 @@ public class LoginTest extends AbstractUiTest {
     }
 
     //переход на страницу авторизации через кнопку «Личный кабинет»,
+    @DisplayName("Клик на кнопку 'Личный кабинет'")
     @Test
     public void goToLoginPageClickPersAccTest() {
         // Переход на стартовую страницу
@@ -72,6 +75,7 @@ public class LoginTest extends AbstractUiTest {
     }
 
     //переход на страницу авторизации из формы регистрации,
+    @DisplayName("Переход на страницу авторизации из формы регистрации")
     @Test
     public void goToLoginPageWithRegPageTest() {
         // Переход на стартовую страницу
@@ -83,6 +87,7 @@ public class LoginTest extends AbstractUiTest {
     }
 
     //переход на страницу авторизации из формы восстановления пароля,
+    @DisplayName("Переход на страницу авторизации из формы восстановления пароля")
     @Test
     public void goToLoginPageWithForgotPassPageTest() {
         // Переход на стартовую страницу
@@ -94,6 +99,7 @@ public class LoginTest extends AbstractUiTest {
     }
 
     //Собственно сама авторизация
+    @DisplayName("Авторизация")
     @Test
     public void loginTest() {
         //Для этого теста нужен пользователь, создадим его

@@ -1,4 +1,5 @@
 import api.clients.ClientUser;
+import io.qameta.allure.junit4.DisplayName;
 import json.UserEmailPassword;
 import org.junit.After;
 import org.junit.Assert;
@@ -7,9 +8,9 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import page_object.RegisterPage;
+import pageobject.RegisterPage;
 
-import static page_object.LoginPage.LOGIN_URL;
+import static pageobject.LoginPage.LOGIN_URL;
 
 public class RegistrationTest extends AbstractUiTest {
 
@@ -33,6 +34,7 @@ public class RegistrationTest extends AbstractUiTest {
     }
 
     //Положительный сценарий регистрации
+    @DisplayName("Успешная регистрация")
     @Test
     public void registrationUserSuccessTest() {
         registerPage
@@ -54,6 +56,7 @@ public class RegistrationTest extends AbstractUiTest {
     }
 
     //Неудачная попытка регистрации (Пароль не удовлетворяет требованиям)
+    @DisplayName("Ошбика регистрации")
     @Test
     public void registrationUserIncorrectPasswordTest() {
         registerPage

@@ -1,19 +1,20 @@
 import api.clients.ClientUser;
+import io.qameta.allure.junit4.DisplayName;
 import json.User;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import page_object.BasePage;
-import page_object.LoginPage;
-import page_object.PersonalAccountPage;
+import pageobject.BasePage;
+import pageobject.LoginPage;
+import pageobject.PersonalAccountPage;
 
 
 import java.util.concurrent.TimeUnit;
 
-import static page_object.BasePage.BASE_PAGE_URL;
-import static page_object.LoginPage.LOGIN_URL;
-import static page_object.PersonalAccountPage.PERS_ACC_URL;
+import static pageobject.BasePage.BASE_PAGE_URL;
+import static pageobject.LoginPage.LOGIN_URL;
+import static pageobject.PersonalAccountPage.PERS_ACC_URL;
 
 /*В этом классе проверяются переходы
  * 1. Переход авторизованного пользвоателя в личный кабинет
@@ -55,6 +56,7 @@ public class TransitionTest extends AbstractUiTest {
     }
 
     //Переход авторизованного пользователя в личный кабинет
+    @DisplayName("Переход авторизованного пользователя в личный кабинет")
     @Test
     public void transitionBasePageIntoPerrAccTest() {
         //Сначала нужно авторизоваться
@@ -72,6 +74,7 @@ public class TransitionTest extends AbstractUiTest {
     }
 
     //Переход из личного кабинета в конструктор не авторизованного пользователя
+    @DisplayName("Переход из личного кабинета в конструктор не авторизованного пользователя")
     @Test
     public void transitionPerrAccIntoConstructTest() {
         driver.get(LOGIN_URL);
@@ -81,6 +84,7 @@ public class TransitionTest extends AbstractUiTest {
     }
 
     //Переход из личного кабинета в конструктор авторизованного пользователя
+    @DisplayName("Переход из личного кабинета в конструктор авторизованного пользователя")
     @Test
     public void transitionPerrAccIntoConstructAuthTest() {
         //Сначала нужно авторизоваться

@@ -1,4 +1,4 @@
-package page_object;
+package pageobject;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -22,9 +22,9 @@ public class BasePage {
     private final By buttonPersAccInBasePage = By.xpath(".//p[text()='Личный Кабинет']");
     private final By buttonCreateOrder= By.xpath(".//button[text()='Оформить заказ']");
 
-    private final By buttonBuns= By.xpath(".//span[text()='Булки']");
-    private final By buttonSauce= By.xpath(".//span[text()='Соусы']");
-    private final By buttonFilling= By.xpath(".//span[text()='Начинки']");
+    private final By buttonBuns= By.xpath(".//span[text()='Булки']/parent::*");
+    private final By buttonSauce= By.xpath(".//span[text()='Соусы']/parent::*");
+    private final By buttonFilling= By.xpath(".//span[text()='Начинки']/parent::*");
     //При выделении разделам он становится подчеркнутым
     // и к имени класса добавляется стиль tab_tab_type_current__2BEPc
     //Для поиска проще обратится к родителю от имени раздела
